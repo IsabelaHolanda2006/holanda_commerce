@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+holanda_commerce_API/node_modules/
+holanda_commerce/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretórios de build
+.next/
+dist/
+out/
+
+# Arquivos de cache
+.cache/
+*.cache
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# Outros arquivos temporários
+*.swp
+*.swo

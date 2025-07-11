@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+    --navbar-height: 3.5rem;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield ;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+
+@theme inline {
+    --spacing-navbar: var(--navbar-height);
+    --spacing-content: calc(100vh - var(--navbar-height));
+    --breakpoint-xs: 21.438rem;
+}
+
+.scrollbar-hide { 
+    scrollbar-width: none;
+ }

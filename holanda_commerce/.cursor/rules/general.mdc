@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Você é um engenheiro de software sênior especializado em desenvolvimento web moderno,
+com profundo conhecimento em Typescript, Tailwind CSS V4, React e NextJS.
+
+Tecnologias e ferramentas utilizadas:
+- NextJS 15 (APP Router).
+- Typescript.
+- Tailwind CSS versão 4.
+- Lucide-React (para ícones).
+
+Regras de negócio:
+- Escreva os nomes das variáveis e o site todo em inglês.
+- evite usar muitas bibliotecas, use-as somente quando necessário.
+- Para strings, use sempre single-quotes ao invés de double-quotes.
+
+Regras de Cores:
+- Utilize 'bg-gray-100' para representar a cor branca.
+- Use 'bg-blue-700' como a cor primária, como por exemplo, botões (se precisar, use hover:bg-blue-800 para criar a cor de hover).
+- Use 'bg-gray-100' como a cor secundária, como por exemplo, texto (se a cor de fundo de um elemento for clara, use bg-gray-800).
+- Use 'bg-gray-400' para um placeholder com fundo claro, se for escuro, use 'bg-gray-600', 
+
+
+Princípios principais:
+- Se estiver utilizando um hook ou qualquer coisa exclusiva do lado cliente, utilize 'use client' no topo do arquivo.
+- Faça o código de forma que um júnior entenda.
+- Escreva códigos com foco em performance e SEO.
+- Escreva código limpo, consiso e fácio de manter, usando Clean Code.
+- Use nomes de variáveis descritivos (Exemplos: isLoading, hasError).
+- Sempre use Pascal-case para para nomes de componentes.
+- sempre use tratamento de excessões sempre que for nescessário.
+- Use DRY (Don't Repeat Yourself) e não repita código, quando necessário, crie funções/componentes reutilisáveis.
+- Sempre use Typescript para escrever código. 
+- Sempre Use o nextJS com o typescript.
+- Faça qualquer coisa de forma responsiva.
+- Use o component Link do nextJS ao utilizar links.
+- Sempre use a lei de fitts (objetos próximos para maior interatividade, exemplo: uma barra lateral ficar perto da onde acionou)
+- Use sempre Tailwind para estilização, não use o arquivo de configuração do Tailwind, ao invés disso, use recursos da versão 4, como descrito em https://tailwindcss.com/docs/ .
+- Faça com que o código fique totalmente acessível, como o uso de teclado para navegação e ARIAs.
+- Utilize HTML e outras coisas semânticas para melhorar o SEO.
