@@ -1,0 +1,25 @@
+{
+    "functions": {
+      "src/routes/**/*.ts": {
+        "runtime": "@vercel/node@3.0.0"
+      }
+    },
+    "routes": [
+      {
+        "src": "/api/auth",
+        "dest": "/src/routes/auth.routes.ts"
+      },
+      {
+        "src": "/api/category",
+        "dest": "/src/routes/category.routes.ts"
+      },
+      {
+        "src": "/api/products",
+        "dest": "/src/routes/product.routes.ts"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "/src/routes/$1.routes.ts"
+      }
+    ]
+  }
