@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node --experimental-transform-types --watch src/server.ts",
+    "build": "npx tsc",
+    "start": "node dist/server.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },
