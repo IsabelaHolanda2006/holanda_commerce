@@ -19,6 +19,12 @@ export default async function UseFetching<T = unknown>(
   try {
     const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
     
+    const isLocalhost = typeof window !== 'undefined' && 
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    
+    const baseUrl = isLocalhost ? 'http://localhost:8000/api' : '/api';
+    const fullUrl = `${baseUrl}${url}`;
+    
       const requestHeaders: Record<string, string> = {
       ...headers,
     };
@@ -40,7 +46,7 @@ export default async function UseFetching<T = unknown>(
       requestOptions.body = JSON.stringify(body);
     }
     
-    const response = await fetch(url, requestOptions);
+    const response = await fetch(fullUrl, requestOptions);
     
     if (!response.ok) {
       let errorMessage = 'Request failed';

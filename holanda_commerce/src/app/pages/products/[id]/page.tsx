@@ -29,7 +29,7 @@ export default function Page() {
       try {
         setIsLoading(true);
         const response = await UseFetching<Product>(
-          `http://localhost:8000/read/products/id/${params.id}`
+          `/read/products/id/${params.id}`
         );
 
         if (response.error) {
@@ -69,7 +69,7 @@ export default function Page() {
       async function checkWishlist() {
         try {
           const response = await UseFetching<ProductsOnWishlist[]>(
-            `http://localhost:8000/read/products_in_wishlist/${user!.id}`
+            `/read/products_in_wishlist/${user!.id}`
           );
 
           if (response.error) {
@@ -103,7 +103,7 @@ export default function Page() {
 
       if (!isWishlist) {
         const response = await UseFetching(
-          `http://localhost:8000/create/products_in_wishlist`,
+          `/create/products_in_wishlist`,
           {
             method: 'POST',
             body: {
@@ -121,13 +121,9 @@ export default function Page() {
         setIsWishlist(true);
       } else {
         const response = await UseFetching(
-          `http://localhost:8000/delete/products_in_wishlist`,
+          `/delete/products_in_wishlist/${user.id}/${product.id}`,
           {
-            method: 'DELETE',
-            body: {
-              product_id: product.id,
-              user_id: user.id
-            }
+            method: 'DELETE'
           }
         );
 
@@ -157,7 +153,7 @@ export default function Page() {
       setIsAddingToCart(true);
 
       const cartResponse = await UseFetching(
-        `http://localhost:8000/read/shopping_cart/${user.id}`
+        `/read/shopping_cart/${user.id}`
       );
 
       if (cartResponse.error) {
@@ -172,7 +168,7 @@ export default function Page() {
 
       if (alreadyInCart) {
         const removeResponse = await UseFetching(
-          `http://localhost:8000/delete/shopping_cart/${user.id}/${product.id}`,
+          `/delete/shopping_cart/${user.id}/${product.id}`,
           {
             method: 'DELETE'
           }
@@ -186,7 +182,7 @@ export default function Page() {
         alert('Product removed from cart!');
       } else {
         const addResponse = await UseFetching(
-          `http://localhost:8000/create/shopping_cart`,
+          `/create/shopping_cart`,
           {
             method: 'POST',
             body: {

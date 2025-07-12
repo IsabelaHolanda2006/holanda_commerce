@@ -25,7 +25,7 @@ export default function CategoryCard({ width = 'w-15', height = 'h-15' }: Catego
             try {
                 setIsLoading(true);
                 
-                const response = await UseFetching<Category[]>('http://localhost:8000/read/categories');
+                const response = await UseFetching<Category[]>('/read/categories');
                 
                 if (response.error) {
                     console.error('Error fetching categories:', response.error);

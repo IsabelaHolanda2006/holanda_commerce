@@ -18,26 +18,50 @@ const connection = await mySql.createConnection({
   database: process.env.DATABASE
 });
 
+const prefix = '/api';
 
 const fastify = Fastify({
   logger: true
 });
 
 fastify.register(cors, {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 });
 
-categoryRoutes(fastify, connection);
-productRoutes(fastify, connection);
-userRoutes(fastify, connection);
-transactionRoutes(fastify, connection);
-shoppingCartRoutes(fastify, connection);
-productOnCategoryRoutes(fastify, connection);
-authRoutes(fastify, connection);
-productsInWishlistRoutes(fastify, connection);
+fastify.register(async (fastify) => {
+  categoryRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  productRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  userRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  transactionRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  shoppingCartRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  productOnCategoryRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  authRoutes(fastify, connection);
+}, { prefix: prefix });
+
+fastify.register(async (fastify) => {
+  productsInWishlistRoutes(fastify, connection);
+}, { prefix: prefix });
 
 fastify.listen({ port: 8000 }, (error) => {
   if (error) {

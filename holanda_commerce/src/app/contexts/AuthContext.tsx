@@ -37,7 +37,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkAuthStatus = async (authToken: string) => {
     try {
-      const response = await UseFetching<User>('http://localhost:8000/auth/me', {
+      const response = await UseFetching<User>('/auth/me', {
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await UseFetching<{ user: User; token: string }>('http://localhost:8000/auth/login', {
+      const response = await UseFetching<{ user: User; token: string }>('/auth/login', {
         method: 'POST',
         body: { email, password },
       });
@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = async (name: string, email: string, password: string): Promise<boolean> => {
     try {
-      const response = await UseFetching<{ message: string }>('http://localhost:8000/auth/register', {
+      const response = await UseFetching<{ message: string }>('/auth/register', {
         method: 'POST',
         body: { name, email, password },
       });

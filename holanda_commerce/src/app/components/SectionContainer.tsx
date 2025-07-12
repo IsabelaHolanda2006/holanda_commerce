@@ -65,7 +65,7 @@ export default function SectionContainer({ title, endpoint, limit, orientation, 
                 setIsLoading(true);
                 setError(null);
                 
-                const response = await UseFetching<Product[]>(`http://localhost:8000${endpoint}`);
+                const response = await UseFetching<Product[]>(`${endpoint}`);
                 
                 if (response.error) {
                     setError(response.error);

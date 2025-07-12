@@ -30,7 +30,7 @@ export default function ProductCard({ product, width = 'w-64', height = 'h-80' }
       async function fetchWishlist() {
         try {
           const response = await UseFetching<Wishlist[]>(
-            `http://localhost:8000/read/products_in_wishlist/${user!.id}`
+            `/read/products_in_wishlist/${user!.id}`
           );
 
           if (response.error) {
@@ -67,7 +67,7 @@ export default function ProductCard({ product, width = 'w-64', height = 'h-80' }
       setIsWishlistLoading(true);
 
       const response = await UseFetching<Wishlist[]>(
-        `http://localhost:8000/read/products_in_wishlist/${user.id}`
+        `/read/products_in_wishlist/${user.id}`
       );
 
       if (response.error) {
@@ -80,7 +80,7 @@ export default function ProductCard({ product, width = 'w-64', height = 'h-80' }
 
       if (!isInWishlist) {
         const addResponse = await UseFetching(
-          `http://localhost:8000/create/products_in_wishlist`,
+          `/create/products_in_wishlist`,
           {
             method: 'POST',
             body: {
@@ -98,13 +98,9 @@ export default function ProductCard({ product, width = 'w-64', height = 'h-80' }
         setWishlist(true);
       } else {
         const removeResponse = await UseFetching(
-          `http://localhost:8000/delete/products_in_wishlist`,
+          `/delete/products_in_wishlist/${user.id}/${productId}`,
           {
-            method: 'DELETE',
-            body: {
-              product_id: productId,
-              user_id: user.id
-            }
+            method: 'DELETE'
           }
         );
 

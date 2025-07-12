@@ -17,9 +17,17 @@ export function productsInWishlistRoutes(fastify: fastify.FastifyInstance, mysql
     });
 
     // delete
-    fastify.delete('/delete/products_in_wishlist', async (req: fastify.FastifyRequest, res: fastify.FastifyReply) => {
-        const { product_id, user_id } = req.body as { product_id: string, user_id: string };
-        const [rows] = await mysql.execute('DELETE FROM products_in_wishlist WHERE product_id = ? AND user_id = ?', [product_id, user_id]);
-        res.send(rows);
+    fastify.delete('/delete/products_in_wishlist/:user_id/:product_id', async (req: fastify.FastifyRequest, res: fastify.FastifyReply) => {
+        const { user_id, product_id } = req.params as { user_id: string, product_id: string };
+        console.log('API: Deleting from wishlist - user_id:', user_id, 'product_id:', product_id);
+        
+        try {
+            const [rows] = await mysql.execute('DELETE FROM products_in_wishlist WHERE user_id = ? AND product_id = ?', [user_id, product_id]);
+            console.log('API: Delete result:', rows);
+            res.send(rows);
+        } catch (error) {
+            console.error('API: Error deleting from wishlist:', error);
+            res.status(500).send({ error: 'Internal server error' });
+        }
     });
 }

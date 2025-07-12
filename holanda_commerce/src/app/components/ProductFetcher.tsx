@@ -26,11 +26,11 @@ export default function ProductFetcher({ readedFrom }: ProductFetcherProps) {
 
         async function fetchProducts() {
             if (user?.id) {
-                const fetchedResponse = await UseFetching<ProductsOnWishlist[]>(`http://localhost:8000/read/${readedFrom}/${user.id}`, { method: 'GET' });
+                const fetchedResponse = await UseFetching<ProductsOnWishlist[]>(`/read/${readedFrom}/${user.id}`, { method: 'GET' });
                 if (fetchedResponse.data) {
                     const productsData = await Promise.all(
                         fetchedResponse.data.map(async (fetched) => {
-                            const productResponse = await UseFetching<Product[]>(`http://localhost:8000/read/products/id/${fetched.product_id}`, { method: 'GET' });
+                            const productResponse = await UseFetching<Product[]>(`/read/products/id/${fetched.product_id}`, { method: 'GET' });
                             return productResponse.data && productResponse.data[0];
                         })
                     );

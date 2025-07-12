@@ -28,7 +28,7 @@ export default function NavBar() {
     };
 
     const handleSearch = (query: string) => {
-        router.push(`http://localhost:3000/pages/query_products/${query}`);
+        router.push(`/pages/query_products/${query}`);
     };
 
     return (
