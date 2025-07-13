@@ -1,5 +1,3 @@
-import 'dotenv/config';
-
 interface FetchOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   body?: unknown;
@@ -24,7 +22,7 @@ export default async function UseFetching<T = unknown>(
     const isLocalhost = typeof window !== 'undefined' && 
       (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     
-    const baseUrl = isLocalhost ? 'http://localhost:8000/api' : `${process.env.API_URL}/api`;
+    const baseUrl = isLocalhost ? 'http://localhost:8000/api' : 'https://holanda-commerce.up.railway.app/api';
     const fullUrl = `${baseUrl}${url}`;
     
       const requestHeaders: Record<string, string> = {
