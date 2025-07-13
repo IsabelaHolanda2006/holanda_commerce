@@ -63,7 +63,10 @@ fastify.register(async (fastify) => {
   productsInWishlistRoutes(fastify, connection);
 }, { prefix: prefix });
 
-fastify.listen({ port: 8000 }, (error) => {
+const host = '0.0.0.0';
+const port = process.env.PORT ? parseInt(process.env.PORT) : 8000;
+
+fastify.listen({ port: port, host: host }, (error) => {
   if (error) {
     fastify.log.error(error);
     process.exit(1);
