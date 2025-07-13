@@ -25,7 +25,7 @@ const fastify = Fastify({
 });
 
 fastify.register(cors, {
-  origin: ['http://localhost:3000'],
+  origin: ['http://localhost:3000', 'https://holanda-commerce.vercel.app/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
