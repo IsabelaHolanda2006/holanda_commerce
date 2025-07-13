@@ -64,10 +64,9 @@ fastify.register(async (fastify) => {
 }, { prefix: prefix });
 
 const host = '0.0.0.0';
-const port = process.env.host === 'localhost' ? 8000 : parseInt(process.env.PORT!);
+const port = parseInt(process.env.PORT!) || 8000;
 
-
-fastify.listen({ port: port, host: host }, (error) => {
+fastify.listen({ port, host }, (error) => {
   if (error) {
     fastify.log.error(error);
     process.exit(1);
